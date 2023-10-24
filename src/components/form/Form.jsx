@@ -19,6 +19,9 @@ const Form = () => {
   // State for showing summary
   const [ showSummary, setShowSummary ] = useState(false);
 
+  // State for showing questions
+  const [ showQuestions, setShowQuestions ] = useState(true);
+
   // Function to update form
   const updateForm = (field, value) => {
     setFormData((values) => ({ ...values, [field]: value }))
@@ -37,8 +40,12 @@ const Form = () => {
   const handleNext = () => setCounter((counter) => counter + 1);
 
   // Function for showing summary
-  const handleSubmit = () => setShowSummary(!showSummary);
+  const handleSubmit = () => {
+    setShowSummary(!showSummary);
+    setShowQuestions(!showQuestions);
+  };
 
+  // Function for survey questions
   const selectQuestion = () => {
     switch(counter) {
       case 0:
@@ -57,22 +64,25 @@ const Form = () => {
           setCounter(2);
         }
     }
-  }
+  };
 
   return (
-    <div className="Form">
-      {selectQuestion()}
-      <div className="buttons">
-        <button onClick={handlePrev}>Previous</button>
-        <button onClick={handleNext}>Next</button>
+    <>
+      <div className={ showQuestions ? "Form" : "hidden" }>
+        {selectQuestion()}
+        <div className="buttons">
+          <button onClick={handlePrev}>Previous</button>
+          <button onClick={handleNext}>Next</button>
+        </div>
+        
+        <button onClick={handleSubmit}>Submit</button>
       </div>
-      
-      <button onClick={handleSubmit}>Submit</button>
+
       {showSummary && (
-        <Summary formData={formData} />
+        <Summary formData={formData} setShowQuestions={setShowQuestions} setShowSummary={setShowSummary} />
       )}
-    </div>
-  )
-}
+    </>
+  );
+};
 
 export default Form;

@@ -6,5 +6,16 @@
 }
 
 .buttons {
+  margin: 10px;
+}
+
+.summary {
   text-align: center;
+  max-width: 900px;
+  width: 100%;
+  min-width: 340px;
+}
+
+.hidden {
+  display: none;
 }
