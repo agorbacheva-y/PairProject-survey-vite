@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Header from "./components/Header";
-import Question from "./components/form/Question";
+import Form from "./components/form/Form";
 
 
 export const App = () => {
@@ -8,7 +8,7 @@ export const App = () => {
   return (
     <>
       <Header />
-      <Question />
+      <Form />
     </>
   );
 };
