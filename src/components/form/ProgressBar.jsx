@@ -1,5 +1,5 @@
 const ProgressBar = ({ counter, length }) => {
-  let progress = (counter / (length - 1)) * 100;
+  let progress = Math.round((counter / (length)) * 100);
 
   return (
     <>
