@@ -34,3 +34,16 @@ button {
 .radio {
   margin: 10px;
 }
+
+#progressBar {
+  width: 100%;
+  background-color: #ddd;
+  text-align: center;
+}
+
+#currentProgress {
+  transition: 2s ease;
+  height: 30px;
+  background-color: #04AA6D;
+  color: #ddd;
+}

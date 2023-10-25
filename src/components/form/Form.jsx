@@ -3,6 +3,7 @@ import Radio from "./Radio";
 import Dropdown from "./Dropdown";
 import Text from "./Text";
 import Summary from "./Summary";
+import ProgressBar from "./ProgressBar";
 import "./Form.css";
 
 const Form = () => {
@@ -127,6 +128,7 @@ const Form = () => {
 
   return (
     <>
+      <ProgressBar counter={counter} length={testA.length} />
       <div className={ showQuestions ? "form" : "hidden" }>
         {selectQuestion()}
         <div className="buttons">
