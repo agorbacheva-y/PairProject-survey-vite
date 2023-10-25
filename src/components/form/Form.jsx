@@ -22,9 +22,16 @@ const Form = () => {
   // State for showing questions
   const [ showQuestions, setShowQuestions ] = useState(true);
 
+  // State for holding errors in input validation
+  const [ errors, setErrors ] = useState({});
+
   // Function to update form
   const updateForm = (field, value) => {
-    setFormData((values) => ({ ...values, [field]: value }))
+    setFormData((values) => ({ ...values, [field]: value }));
+
+    if (!value) {
+      //
+    }
   };
 
   // Function for prev button
@@ -39,10 +46,12 @@ const Form = () => {
   // Function for next button
   const handleNext = () => setCounter((counter) => counter + 1);
 
-  // Function for showing summary
-  const handleSubmit = () => {
+  // Function for showing summary on submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setShowSummary(!showSummary);
     setShowQuestions(!showQuestions);
+    setErrors(validateInput(formData));
   };
 
   // Function for survey questions
@@ -64,6 +73,21 @@ const Form = () => {
           setCounter(2);
         }
     }
+  };
+
+  // Function to validate inputs
+  const validateInput = (formData) => {
+    let errors = {};
+    if (!formData.name) {
+      errors.name = "Please enter your name.";
+    }
+    if (!formData.radio) {
+      errors.radio = "Please select one choice.";
+    }
+    if (!formData.dropdown) {
+      errors.dropdown = "Please select one choice.";
+    }
+    return errors;
   };
 
   return (

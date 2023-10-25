@@ -7,7 +7,13 @@ const Text = ({ children, value, updateForm }) => {
   return (
     <div className="text">
       <p>{children}</p>
-      <input type="text" value={value} onChange={updateName} />
+      <input 
+      label="name"
+      type="text" 
+      value={value} 
+      onChange={updateName} 
+      placeholder="Enter name"
+      />
     </div>
   );
 }

@@ -1,16 +1,10 @@
 .header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 200px;
+  display: flex;
   margin: 50px auto;
   text-align: center;
 }
 
 .form {
-  width: 500px;
-  height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;

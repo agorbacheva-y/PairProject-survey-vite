@@ -11,9 +11,11 @@ const Dropdown = ({ children, options, selection, updateForm }) => {
         <option value="">Select an option</option>
         {options.map((option) => {
           return (
-            <>
-              <option value={option}>{option}</option>
-            </>
+            <option 
+            key={options.indexOf(option)} 
+            value={option}>
+              {option}
+            </option>
           )
         })}
       </select>
