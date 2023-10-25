@@ -2,18 +2,15 @@
   "questions": [
     {
       "type": "text",
-      "value": "t1hasda",
       "question": "What is your name?"
     },
     {
       "type": "radio",
-      "value": "t2",
       "question": "miau?",
       "options": ["kwe", "grawr", "hiss"]
     },
     {
       "type": "dropdown",
-      "value": "t3",
       "question": "grawr?",
       "options": ["miau", "moo", "bang"]
     }
