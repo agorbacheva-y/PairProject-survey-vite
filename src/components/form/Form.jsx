@@ -13,7 +13,7 @@ const Form = () => {
   // State for which question is displayed
   const [counter, setCounter] = useState(0);
 
-  // State for holding form data
+  // State for holding form input
   const [formData, setFormData] = useState({});
 
   // State for showing summary
@@ -22,16 +22,9 @@ const Form = () => {
   // State for showing questions
   const [ showQuestions, setShowQuestions ] = useState(true);
 
-  // State for holding errors in input validation
-  const [ errors, setErrors ] = useState({});
-
   // Function to update form
   const updateForm = (field, value) => {
     setFormData((values) => ({ ...values, [field]: value }));
-
-    if (!value) {
-      //
-    }
   };
 
   // Function for prev button
@@ -57,7 +50,6 @@ const Form = () => {
     e.preventDefault();
     setShowSummary(!showSummary);
     setShowQuestions(!showQuestions);
-    setErrors(validateInput(formData));
   };
 
   // Function for survey questions
@@ -98,21 +90,6 @@ const Form = () => {
     }
   };
 
-  // Function to validate inputs
-  const validateInput = (formData) => {
-    let errors = {};
-    if (!formData.name) {
-      errors.name = "Please enter your name.";
-    }
-    if (!formData.radio) {
-      errors.radio = "Please select one choice.";
-    }
-    if (!formData.dropdown) {
-      errors.dropdown = "Please select one choice.";
-    }
-    return errors;
-  };
-
   return (
     <>
       <ProgressBar counter={counter} length={questionData.length} />
@@ -120,10 +97,10 @@ const Form = () => {
         {selectQuestion()}
         <div className="buttons">
           <button onClick={handlePrev}>Previous</button>
-          <button onClick={handleNext}>Next</button>
+          <button onClick={handleNext} >Next</button>
         </div>
 
-        <button onClick={handleSubmit}>Submit</button>
+        <button onClick={handleSubmit} disabled={!Object.values(formData)}>Submit</button>
       </div>
 
       {showSummary && (
@@ -131,6 +108,7 @@ const Form = () => {
           formData={formData}
           setShowQuestions={setShowQuestions}
           setShowSummary={setShowSummary}
+          setCounter={setCounter}
         />
       )}
     </>

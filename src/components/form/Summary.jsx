@@ -1,10 +1,11 @@
-const Summary = ({ formData, setShowQuestions, setShowSummary }) => {
+const Summary = ({ formData, setShowQuestions, setShowSummary, setCounter }) => {
   console.log(formData);
 
   // Function to go back to beginning of survey
   const goToStart = () => {
     setShowQuestions(true);
     setShowSummary(false);
+    setCounter(0);
   };
 
   return (
@@ -20,5 +21,3 @@ const Summary = ({ formData, setShowQuestions, setShowSummary }) => {
 }
 
 export default Summary;
-
-// need to fix goToStart func so it goes back to first question
