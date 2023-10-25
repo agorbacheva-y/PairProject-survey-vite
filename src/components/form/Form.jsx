@@ -68,7 +68,7 @@ const Form = () => {
 
   return (
     <>
-      <div className={ showQuestions ? "Form" : "hidden" }>
+      <div className={ showQuestions ? "form" : "hidden" }>
         {selectQuestion()}
         <div className="buttons">
           <button onClick={handlePrev}>Previous</button>
