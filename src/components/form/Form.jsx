@@ -115,7 +115,7 @@ const Form = () => {
 
   return (
     <>
-      <ProgressBar counter={counter} length={testA.length} />
+      <ProgressBar counter={counter} length={questionData.length} />
       <div className={ showQuestions ? "form" : "hidden" }>
         {selectQuestion()}
         <div className="buttons">
