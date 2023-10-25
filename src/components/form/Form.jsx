@@ -125,21 +125,6 @@ const Form = () => {
     return errors;
   };
 
-  // Function to validate inputs
-  const validateInput = (formData) => {
-    let errors = {};
-    if (!formData.name) {
-      errors.name = "Please enter your name.";
-    }
-    if (!formData.radio) {
-      errors.radio = "Please select one choice.";
-    }
-    if (!formData.dropdown) {
-      errors.dropdown = "Please select one choice.";
-    }
-    return errors;
-  };
-
   return (
     <>
       <div className={ showQuestions ? "form" : "hidden" }>
