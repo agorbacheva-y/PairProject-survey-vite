@@ -27,6 +27,24 @@ const Form = () => {
     setFormData((values) => ({ ...values, [field]: value }));
   };
 
+  // Test data to pass as questions
+  const testA = [
+    {
+      type: "text",
+      question: "What is your name?",
+    },
+    {
+      type: "radio",
+      question: "miau?",
+      options: ["kwe", "grawr", "hiss"],
+    },
+    {
+      type: "dropdown",
+      question: "grawr?",
+      options: ["miau", "moo", "bang"],
+    },
+  ];
+
   // Function for prev button
   const handlePrev = () => {
     if (counter > 0) {
@@ -36,8 +54,14 @@ const Form = () => {
     }
   };
 
-  // Function for next button
-  const handleNext = () => setCounter((counter) => counter + 1);
+  // Function for next button (Updated to not go out of bounds)
+  const handleNext = () => {
+    if (counter < testA.length - 1) {
+      setCounter((counter) => counter + 1);
+    } else {
+      setCounter(testA.length - 1);
+    }
+  };
 
   // Function for showing summary
   const handleSubmit = () => {
@@ -47,42 +71,33 @@ const Form = () => {
 
   // Function for survey questions
   const selectQuestion = () => {
-    switch (counter) {
-      case 0:
+    switch (testA[counter].type) {
+      case "text":
         return (
           <Text value={formData.name} updateForm={updateForm}>
-            What is your name?
+            {testA[counter].question}
           </Text>
         );
-        break;
-      case 1:
+      case "radio":
         return (
           <Radio
-            options={["test", "guru", "grawr"]}
+            options={testA[counter].options}
             value={formData.radio}
             updateForm={updateForm}
           >
-            Miau?
+            {testA[counter].question}
           </Radio>
         );
-        break;
-      case 2:
+      case "dropdown":
         return (
           <Dropdown
-            options={["Moo", "kas", "kwe"]}
+            options={testA[counter].options}
             value={formData.dropdown}
             updateForm={updateForm}
           >
-            Grawr!?
+            {testA[counter].question}
           </Dropdown>
         );
-        break;
-      default:
-        if (counter < 0) {
-          setCounter(0);
-        } else {
-          setCounter(2);
-        }
     }
   };
 
