@@ -42,10 +42,16 @@ const Form = () => {
 
   // Function for next button (Updated to not go out of bounds)
   const handleNext = () => {
+    const submitBtn = document.getElementById("submit-btn");
     if (counter < questionData.length - 1) {
       setCounter((counter) => counter + 1);
     } else {
       setCounter(questionData.length - 1);
+    }
+
+    // !!! NOT WORKING...
+    if (Object.values(formData).every(value => value === '')) {
+      submitBtn.disabled = true;
     }
   };
 
@@ -102,7 +108,7 @@ const Form = () => {
           <button onClick={handleNext} >Next</button>
         </div>
 
-        <button onClick={handleSubmit} disabled={!Object.values(formData)}>Submit</button>
+        <button id="submit-btn" onClick={handleSubmit} >Submit</button>
       </div>
 
       {showSummary && (
