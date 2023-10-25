@@ -1,6 +1,6 @@
-const Radio = ({ children, options, value, updateForm }) => {
+const Radio = ({ children, options, value, formData, updateForm }) => {
   const updateRadio = (e) => {
-    updateForm("radio", e.target.value);
+    updateForm(value, e.target.value);
   };
 
   return (
@@ -15,7 +15,7 @@ const Radio = ({ children, options, value, updateForm }) => {
                 id={option}
                 value={option}
                 onChange={updateRadio}
-                checked={option === value}
+                checked={option === formData[value]}
               />{" "}
               {option}
             </p>

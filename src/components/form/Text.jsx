@@ -1,7 +1,6 @@
-const Text = ({ children, value, updateForm }) => {
-
+const Text = ({ children, value, formData, updateForm }) => {
   const updateName = (e) => {
-    updateForm("name", e.target.value);
+    updateForm(value, e.target.value);
   };
 
   return (
@@ -10,12 +9,12 @@ const Text = ({ children, value, updateForm }) => {
       <input 
       label="name"
       type="text" 
-      value={value} 
+      value={formData[value]} 
       onChange={updateName} 
       placeholder="Enter name"
       />
     </div>
   );
-}
+};
 
 export default Text;

@@ -5,17 +5,16 @@ import Text from "./Text";
 import Summary from "./Summary";
 import ProgressBar from "./ProgressBar";
 import "./Form.css";
+import data from "../../questions.json";
 
 const Form = () => {
+  const questionData = data.questions;
+
   // State for which question is displayed
   const [counter, setCounter] = useState(0);
 
   // State for holding form data
-  const [formData, setFormData] = useState({
-    name: "",
-    radio: "",
-    dropdown: "",
-  });
+  const [formData, setFormData] = useState({});
 
   // State for showing summary
   const [showSummary, setShowSummary] = useState(false);
@@ -35,24 +34,6 @@ const Form = () => {
     }
   };
 
-  // Test data to pass as questions
-  const testA = [
-    {
-      type: "text",
-      question: "What is your name?",
-    },
-    {
-      type: "radio",
-      question: "miau?",
-      options: ["kwe", "grawr", "hiss"],
-    },
-    {
-      type: "dropdown",
-      question: "grawr?",
-      options: ["miau", "moo", "bang"],
-    },
-  ];
-
   // Function for prev button
   const handlePrev = () => {
     if (counter > 0) {
@@ -64,10 +45,10 @@ const Form = () => {
 
   // Function for next button (Updated to not go out of bounds)
   const handleNext = () => {
-    if (counter < testA.length - 1) {
+    if (counter < questionData.length - 1) {
       setCounter((counter) => counter + 1);
     } else {
-      setCounter(testA.length - 1);
+      setCounter(questionData.length - 1);
     }
   };
 
@@ -81,31 +62,37 @@ const Form = () => {
 
   // Function for survey questions
   const selectQuestion = () => {
-    switch (testA[counter].type) {
+    switch (questionData[counter].type) {
       case "text":
         return (
-          <Text value={formData.name} updateForm={updateForm}>
-            {testA[counter].question}
+          <Text
+            value={questionData[counter].value}
+            formData={formData}
+            updateForm={updateForm}
+          >
+            {questionData[counter].question}
           </Text>
         );
       case "radio":
         return (
           <Radio
-            options={testA[counter].options}
-            value={formData.radio}
+            options={questionData[counter].options}
+            value={questionData[counter].value}
+            formData={formData}
             updateForm={updateForm}
           >
-            {testA[counter].question}
+            {questionData[counter].question}
           </Radio>
         );
       case "dropdown":
         return (
           <Dropdown
-            options={testA[counter].options}
-            value={formData.dropdown}
+            options={questionData[counter].options}
+            value={questionData[counter].value}
+            formData={formData}
             updateForm={updateForm}
           >
-            {testA[counter].question}
+            {questionData[counter].question}
           </Dropdown>
         );
     }
