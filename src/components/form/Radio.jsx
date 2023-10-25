@@ -4,7 +4,7 @@ const Radio = ({ children, options, value, updateForm }) => {
   };
 
   return (
-    <>
+    <div className="radio">
       <p>{children}</p>
       {options.map((option) => {
         return (
@@ -22,7 +22,7 @@ const Radio = ({ children, options, value, updateForm }) => {
           </>
         );
       })}
-    </>
+    </div>
   );
 };
 

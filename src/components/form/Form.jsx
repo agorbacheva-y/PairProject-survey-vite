@@ -20,11 +20,18 @@ const Form = () => {
   const [showSummary, setShowSummary] = useState(false);
 
   // State for showing questions
-  const [showQuestions, setShowQuestions] = useState(true);
+  const [ showQuestions, setShowQuestions ] = useState(true);
+
+  // State for holding errors in input validation
+  const [ errors, setErrors ] = useState({});
 
   // Function to update form
   const updateForm = (field, value) => {
     setFormData((values) => ({ ...values, [field]: value }));
+
+    if (!value) {
+      //
+    }
   };
 
   // Test data to pass as questions
@@ -63,10 +70,12 @@ const Form = () => {
     }
   };
 
-  // Function for showing summary
-  const handleSubmit = () => {
+  // Function for showing summary on submit
+  const handleSubmit = (e) => {
+    e.preventDefault();
     setShowSummary(!showSummary);
     setShowQuestions(!showQuestions);
+    setErrors(validateInput(formData));
   };
 
   // Function for survey questions
@@ -101,9 +110,39 @@ const Form = () => {
     }
   };
 
+  // Function to validate inputs
+  const validateInput = (formData) => {
+    let errors = {};
+    if (!formData.name) {
+      errors.name = "Please enter your name.";
+    }
+    if (!formData.radio) {
+      errors.radio = "Please select one choice.";
+    }
+    if (!formData.dropdown) {
+      errors.dropdown = "Please select one choice.";
+    }
+    return errors;
+  };
+
+  // Function to validate inputs
+  const validateInput = (formData) => {
+    let errors = {};
+    if (!formData.name) {
+      errors.name = "Please enter your name.";
+    }
+    if (!formData.radio) {
+      errors.radio = "Please select one choice.";
+    }
+    if (!formData.dropdown) {
+      errors.dropdown = "Please select one choice.";
+    }
+    return errors;
+  };
+
   return (
     <>
-      <div className={showQuestions ? "Form" : "hidden"}>
+      <div className={ showQuestions ? "form" : "hidden" }>
         {selectQuestion()}
         <div className="buttons">
           <button onClick={handlePrev}>Previous</button>
