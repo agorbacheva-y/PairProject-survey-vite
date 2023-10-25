@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import Radio from "./Radio";
 import Dropdown from "./Dropdown";
 import Text from "./Text";
@@ -7,24 +7,24 @@ import "./Form.css";
 
 const Form = () => {
   // State for which question is displayed
-  const [ counter, setCounter ] = useState(0);
+  const [counter, setCounter] = useState(0);
 
   // State for holding form data
-  const [ formData, setFormData ] = useState({
+  const [formData, setFormData] = useState({
     name: "",
-    radio: [],
+    radio: "",
     dropdown: "",
   });
 
   // State for showing summary
-  const [ showSummary, setShowSummary ] = useState(false);
+  const [showSummary, setShowSummary] = useState(false);
 
   // State for showing questions
-  const [ showQuestions, setShowQuestions ] = useState(true);
+  const [showQuestions, setShowQuestions] = useState(true);
 
   // Function to update form
   const updateForm = (field, value) => {
-    setFormData((values) => ({ ...values, [field]: value }))
+    setFormData((values) => ({ ...values, [field]: value }));
   };
 
   // Function for prev button
@@ -47,15 +47,35 @@ const Form = () => {
 
   // Function for survey questions
   const selectQuestion = () => {
-    switch(counter) {
+    switch (counter) {
       case 0:
-        return <Text value={formData.name} updateForm={updateForm} >What is your name?</Text>;
+        return (
+          <Text value={formData.name} updateForm={updateForm}>
+            What is your name?
+          </Text>
+        );
         break;
       case 1:
-        return <Radio options={["test", "guru", "grawr"]} value={formData.radio} updateForm={updateForm} >Miau?</Radio>;
+        return (
+          <Radio
+            options={["test", "guru", "grawr"]}
+            value={formData.radio}
+            updateForm={updateForm}
+          >
+            Miau?
+          </Radio>
+        );
         break;
       case 2:
-        return <Dropdown options={["Moo", "kas", "kwe"]} value={formData.dropdown} updateForm={updateForm} >Grawr!?</Dropdown>;
+        return (
+          <Dropdown
+            options={["Moo", "kas", "kwe"]}
+            value={formData.dropdown}
+            updateForm={updateForm}
+          >
+            Grawr!?
+          </Dropdown>
+        );
         break;
       default:
         if (counter < 0) {
@@ -68,18 +88,22 @@ const Form = () => {
 
   return (
     <>
-      <div className={ showQuestions ? "Form" : "hidden" }>
+      <div className={showQuestions ? "Form" : "hidden"}>
         {selectQuestion()}
         <div className="buttons">
           <button onClick={handlePrev}>Previous</button>
           <button onClick={handleNext}>Next</button>
         </div>
-        
+
         <button onClick={handleSubmit}>Submit</button>
       </div>
 
       {showSummary && (
-        <Summary formData={formData} setShowQuestions={setShowQuestions} setShowSummary={setShowSummary} />
+        <Summary
+          formData={formData}
+          setShowQuestions={setShowQuestions}
+          setShowSummary={setShowSummary}
+        />
       )}
     </>
   );

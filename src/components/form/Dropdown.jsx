@@ -1,5 +1,4 @@
-const Dropdown = ({ children, options, selection, updateForm }) => {
-  
+const Dropdown = ({ children, options, value, updateForm }) => {
   const updateSelection = (e) => {
     updateForm("dropdown", e.target.value);
   };
@@ -7,18 +6,18 @@ const Dropdown = ({ children, options, selection, updateForm }) => {
   return (
     <>
       <p>{children}</p>
-      <select value={selection} onChange={updateSelection}>
+      <select value={value} onChange={updateSelection}>
         <option value="">Select an option</option>
         {options.map((option) => {
           return (
             <>
               <option value={option}>{option}</option>
             </>
-          )
+          );
         })}
       </select>
     </>
   );
-}
+};
 
 export default Dropdown;

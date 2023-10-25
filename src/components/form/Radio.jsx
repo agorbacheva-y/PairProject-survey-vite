@@ -1,7 +1,7 @@
 const Radio = ({ children, options, value, updateForm }) => {
   const updateRadio = (e) => {
     updateForm("radio", e.target.value);
-  }
+  };
 
   return (
     <>
@@ -9,12 +9,21 @@ const Radio = ({ children, options, value, updateForm }) => {
       {options.map((option) => {
         return (
           <>
-            <p key={options.indexOf(option)}><input type="radio" id={option} value={option} onChange={updateRadio} /> {option}</p>
+            <p key={options.indexOf(option)}>
+              <input
+                type="radio"
+                id={option}
+                value={option}
+                onChange={updateRadio}
+                checked={option === value}
+              />{" "}
+              {option}
+            </p>
           </>
-        )
+        );
       })}
     </>
   );
-}
+};
 
 export default Radio;
