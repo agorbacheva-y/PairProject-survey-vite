@@ -20,10 +20,10 @@ const Form = () => {
   const [showSummary, setShowSummary] = useState(false);
 
   // State for showing questions
-  const [ showQuestions, setShowQuestions ] = useState(true);
+  const [showQuestions, setShowQuestions] = useState(true);
 
   // State for holding errors in input validation
-  const [ errors, setErrors ] = useState({});
+  const [errors, setErrors] = useState({});
 
   // Function to update form
   const updateForm = (field, value) => {
@@ -115,8 +115,8 @@ const Form = () => {
 
   return (
     <>
-      <ProgressBar counter={counter} length={testA.length} />
-      <div className={ showQuestions ? "form" : "hidden" }>
+      <ProgressBar counter={counter} length={questionData.length} />
+      <div className={showQuestions ? "form" : "hidden"}>
         {selectQuestion()}
         <div className="buttons">
           <button onClick={handlePrev}>Previous</button>
@@ -129,6 +129,7 @@ const Form = () => {
       {showSummary && (
         <Summary
           formData={formData}
+          setCounter={setCounter}
           setShowQuestions={setShowQuestions}
           setShowSummary={setShowSummary}
         />
