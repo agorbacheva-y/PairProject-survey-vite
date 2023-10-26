@@ -11,6 +11,8 @@ const Summary = ({
     setCounter(0);
   };
 
+  console.log(formData);
+
   return (
     <>
       <div className="summary">
@@ -18,7 +20,7 @@ const Summary = ({
           // using entries function to make an array with keys and value that can then use the map function
           Object.entries(formData).map(([key, value]) => {
             return (
-              <p>
+              <p key={value}>
                 {key}: {value}
               </p>
             );

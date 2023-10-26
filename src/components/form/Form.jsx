@@ -23,9 +23,6 @@ const Form = () => {
   // State for showing questions
   const [showQuestions, setShowQuestions] = useState(true);
 
-  // State for holding errors in input validation
-  const [errors, setErrors] = useState({});
-
   // Function to update form
   const updateForm = (field, value) => {
     setFormData((values) => ({ ...values, [field]: value }));
@@ -112,6 +109,7 @@ const Form = () => {
           >
             {questionData[counter].question}
           </Slider>
+        );
       default:
         return (
           <p>
@@ -121,21 +119,6 @@ const Form = () => {
           </p>
         );
     }
-  };
-
-  // Function to validate inputs
-  const validateInput = (formData) => {
-    let errors = {};
-    if (!formData.name) {
-      errors.name = "Please enter your name.";
-    }
-    if (!formData.radio) {
-      errors.radio = "Please select one choice.";
-    }
-    if (!formData.dropdown) {
-      errors.dropdown = "Please select one choice.";
-    }
-    return errors;
   };
 
   return (
