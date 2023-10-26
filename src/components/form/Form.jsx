@@ -26,6 +26,9 @@ const Form = () => {
   // State for if input is filled or not
   const [inputFilled, setInputFilled] = useState(false);
 
+  // State for if last question is filled or not
+  const [allFilled, setAllFilled] = useState(false);
+
   // Function to update form
   const updateForm = (field, value) => {
     setFormData((values) => ({ ...values, [field]: value }));
@@ -43,7 +46,6 @@ const Form = () => {
 
   // Function for next button (Updated to not go out of bounds)
   const handleNext = () => {
-    const submitBtn = document.getElementById("submit-btn");
     if (counter < questionData.length - 1) {
       setCounter((counter) => counter + 1);
     } else {
@@ -51,7 +53,15 @@ const Form = () => {
     }
 
     setInputFilled(false);
+    allInputFilled();
   };
+
+  // Function to check if last questions was answered
+  const allInputFilled = () => {
+    if (Object.keys(formData).length === questionData.length) {
+      setAllFilled(true);
+    }
+  }
 
   // Function for showing summary on submit
   const handleSubmit = (e) => {
@@ -132,7 +142,7 @@ const Form = () => {
           <button disabled={inputFilled ? false : true} onClick={handleNext} >Next</button>
         </div>
 
-        <button id="submit-btn" onClick={handleSubmit} >Submit</button>
+        <button disabled={allInputFilled ? false : true} onClick={handleSubmit} >Submit</button>
       </div>
 
       {showSummary && (
