@@ -11,6 +11,23 @@ const Summary = ({
     setCounter(0);
   };
 
+  const generateFortune = () => {
+    switch (formData.fortuneNumber) {
+      case 1:
+        break;
+      case 2:
+        break;
+      case 3:
+        break;
+      case 4:
+        break;
+      case 5:
+        break;
+      default:
+        return `You entered an invalid input! You shall be cursed!`;
+    }
+  };
+
   return (
     <>
       <div className="summary">

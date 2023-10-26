@@ -2,19 +2,50 @@
   "questions": [
     {
       "type": "text",
-      "value": "t1hasda",
-      "question": "What is your name?"
-    },
-    {
-      "type": "radio",
-      "value": "t2",
-      "question": "miau?",
-      "options": ["kwe", "grawr", "hiss"]
+      "value": "thing",
+      "question": "Enter the name of something you like."
     },
     {
       "type": "dropdown",
-      "value": "t3",
-      "question": "grawr?",
+      "value": "group",
+      "question": "Pick one of these groups",
+      "options": ["", "", "", ""]
+    },
+    {
+      "type": "slider",
+      "value": "number",
+      "question": "Which is your favourite number?",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "radio",
+      "value": "place",
+      "question": "Select which place appeals to you most.",
+      "options": ["Stockholm", "Helsinki", "Moscow", "Madagascar", "Las Vegas"]
+    },
+    {
+      "type": "dropdown",
+      "value": "adjective",
+      "question": "Which adjective do you like the look of?",
+      "options": ["miau", "moo", "bang"]
+    },
+    {
+      "type": "dropdown",
+      "value": "verb",
+      "question": "Pick an action that catches your eye.",
+      "options": ["miau", "moo", "bang"]
+    },
+    {
+      "type": "radio",
+      "value": "famousPerson",
+      "question": "Select a famous person you like.",
+      "options": ["Tim", "Tom", "Jim", "Harry"]
+    },
+    {
+      "type": "radio",
+      "value": "profession",
+      "question": "Which of these professions is most interesting to you?",
       "options": ["miau", "moo", "bang"]
     }
   ]
