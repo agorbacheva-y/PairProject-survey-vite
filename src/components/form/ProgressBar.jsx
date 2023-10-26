@@ -1,10 +1,10 @@
 const ProgressBar = ({ counter, length }) => {
-  let progress = Math.round((counter / (length -1)) * 100);
+  let progress = Math.round((counter / length) * 100);
 
   return (
     <>
-      <div id="progressBar">
-        <div id="currentProgress" style={{ width: progress + "%" }}>
+      <div className="progressBar">
+        <div className="currentProgress" style={{ width: progress + "%" }}>
           {progress}%
         </div>
       </div>

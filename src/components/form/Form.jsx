@@ -4,6 +4,7 @@ import Dropdown from "./Dropdown";
 import Text from "./Text";
 import Summary from "./Summary";
 import ProgressBar from "./ProgressBar";
+import Slider from "./Slider";
 import "./Form.css";
 import data from "../../questions.json";
 
@@ -20,7 +21,10 @@ const Form = () => {
   const [showSummary, setShowSummary] = useState(false);
 
   // State for showing questions
-  const [ showQuestions, setShowQuestions ] = useState(true);
+  const [showQuestions, setShowQuestions] = useState(true);
+
+  // State for holding errors in input validation
+  const [errors, setErrors] = useState({});
 
   // Function to update form
   const updateForm = (field, value) => {
@@ -54,12 +58,16 @@ const Form = () => {
   // Function for showing summary on submit
   const handleSubmit = (e) => {
     e.preventDefault();
+    setCounter(questionData.length);
     setShowSummary(!showSummary);
     setShowQuestions(!showQuestions);
   };
 
-  // Function for survey questions
+  // Function for survey questions (Maybe move to another file/component?)
   const selectQuestion = () => {
+    if (counter >= questionData.length) {
+      return <></>;
+    }
     switch (questionData[counter].type) {
       case "text":
         return (
@@ -93,13 +101,47 @@ const Form = () => {
             {questionData[counter].question}
           </Dropdown>
         );
+      case "slider":
+        return (
+          <Slider
+            value={questionData[counter].value}
+            min={questionData[counter].min}
+            max={questionData[counter].max}
+            formData={formData}
+            updateForm={updateForm}
+          >
+            {questionData[counter].question}
+          </Slider>
+      default:
+        return (
+          <p>
+            Invalid question data.
+            <br />
+            Please skip.
+          </p>
+        );
     }
+  };
+
+  // Function to validate inputs
+  const validateInput = (formData) => {
+    let errors = {};
+    if (!formData.name) {
+      errors.name = "Please enter your name.";
+    }
+    if (!formData.radio) {
+      errors.radio = "Please select one choice.";
+    }
+    if (!formData.dropdown) {
+      errors.dropdown = "Please select one choice.";
+    }
+    return errors;
   };
 
   return (
     <>
       <ProgressBar counter={counter} length={questionData.length} />
-      <div className={ showQuestions ? "form" : "hidden" }>
+      <div className={showQuestions ? "form" : "hidden"}>
         {selectQuestion()}
         <div className="buttons">
           <button onClick={handlePrev}>Previous</button>

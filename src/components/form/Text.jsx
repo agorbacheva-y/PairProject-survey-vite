@@ -3,14 +3,19 @@ const Text = ({ children, value, formData, updateForm }) => {
     updateForm(value, e.target.value);
   };
 
+  // To avoid error in console, create empty value on formData
+  if (formData[value] === undefined) {
+    formData[value] = "";
+  }
+
   return (
     <div className="text">
-      <p>{children}</p>
-      <input 
+      <p className="question">{children}</p>
+      <input
         label="name"
-        type="text" 
+        type="text"
         value={formData[value]}
-        onChange={updateName} 
+        onChange={updateName}
         placeholder="Enter name"
       />
     </div>

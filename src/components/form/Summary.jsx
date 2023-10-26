@@ -1,6 +1,9 @@
-const Summary = ({ formData, setShowQuestions, setShowSummary, setCounter }) => {
-  console.log(formData);
-
+const Summary = ({
+  formData,
+  setCounter,
+  setShowQuestions,
+  setShowSummary,
+}) => {
   // Function to go back to beginning of survey
   const goToStart = () => {
     setShowQuestions(true);
@@ -11,13 +14,20 @@ const Summary = ({ formData, setShowQuestions, setShowSummary, setCounter }) => 
   return (
     <>
       <div className="summary">
-        <p>Name: {formData.name}</p>
-        <p>Radio: {formData.radio}</p>
-        <p>Dropdown: {formData.dropdown}</p>
+        {
+          // using entries function to make an array with keys and value that can then use the map function
+          Object.entries(formData).map(([key, value]) => {
+            return (
+              <p>
+                {key}: {value}
+              </p>
+            );
+          })
+        }
         <button onClick={goToStart}>Back to Start</button>
       </div>
     </>
-  )
-}
+  );
+};
 
 export default Summary;
