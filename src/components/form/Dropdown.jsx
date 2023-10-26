@@ -1,12 +1,15 @@
 const Dropdown = ({ children, options, value, formData, updateForm }) => {
   const updateSelection = (e) => {
-    updateForm("dropdown", e.target.value);
+    updateForm(value, e.target.value);
   };
 
   return (
     <>
       <p>{children}</p>
-      <select value={value} onChange={updateSelection}>
+      <select 
+        value={formData[value]} 
+        onChange={updateSelection}
+      >
         <option value="">Select an option</option>
         {options.map((option) => {
           return (

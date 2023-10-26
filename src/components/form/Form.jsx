@@ -14,11 +14,7 @@ const Form = () => {
   const [counter, setCounter] = useState(0);
 
   // State for holding form input
-  const [formData, setFormData] = useState({
-    name: "",
-    radio: "",
-    dropdown: "",
-  });
+  const [formData, setFormData] = useState({});
 
   // State for showing summary
   const [showSummary, setShowSummary] = useState(false);
@@ -68,8 +64,9 @@ const Form = () => {
       case "text":
         return (
           <Text
+            value={questionData[counter].value}
+            formData={formData}
             updateForm={updateForm}
-            value={formData.name}
           >
             {questionData[counter].question}
           </Text>
@@ -78,8 +75,9 @@ const Form = () => {
         return (
           <Radio
             options={questionData[counter].options}
+            value={questionData[counter].value}
+            formData={formData}
             updateForm={updateForm}
-            value={formData.radio}
           >
             {questionData[counter].question}
           </Radio>
@@ -88,9 +86,9 @@ const Form = () => {
         return (
           <Dropdown
             options={questionData[counter].options}
+            value={questionData[counter].value}
             formData={formData}
             updateForm={updateForm}
-            value={formData.dropdown}
           >
             {questionData[counter].question}
           </Dropdown>
@@ -114,9 +112,9 @@ const Form = () => {
       {showSummary && (
         <Summary
           formData={formData}
-          setShowQuestions={setShowQuestions}
-          setShowSummary={setShowSummary}
           setCounter={setCounter}
+          setShowQuestions={setShowQuestions}
+          setShowSummary={setShowSummary}  
         />
       )}
     </>

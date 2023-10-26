@@ -1,6 +1,6 @@
-const Text = ({ children, updateForm, value }) => {
+const Text = ({ children, value, formData, updateForm }) => {
   const updateName = (e) => {
-    updateForm("name", e.target.value);
+    updateForm(value, e.target.value);
   };
 
   return (
@@ -9,7 +9,7 @@ const Text = ({ children, updateForm, value }) => {
       <input 
         label="name"
         type="text" 
-        value={value} 
+        value={formData[value]}
         onChange={updateName} 
         placeholder="Enter name"
       />
