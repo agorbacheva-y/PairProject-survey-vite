@@ -4,6 +4,7 @@ import Dropdown from "./Dropdown";
 import Text from "./Text";
 import Summary from "./Summary";
 import ProgressBar from "./ProgressBar";
+import Slider from "./Slider";
 import "./Form.css";
 import data from "../../questions.json";
 
@@ -99,6 +100,17 @@ const Form = () => {
             {questionData[counter].question}
           </Dropdown>
         );
+      case "slider":
+        return (
+          <Slider
+            value={questionData[counter].value}
+            min={questionData[counter].min}
+            max={questionData[counter].max}
+            formData={formData}
+            updateForm={updateForm}
+          >
+            {questionData[counter].question}
+          </Slider>
       default:
         return (
           <p>
