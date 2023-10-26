@@ -60,7 +60,7 @@ const Form = () => {
     setErrors(validateInput(formData));
   };
 
-  // Function for survey questions
+  // Function for survey questions (Maybe move to another file/component?)
   const selectQuestion = () => {
     switch (questionData[counter].type) {
       case "text":
@@ -94,6 +94,14 @@ const Form = () => {
           >
             {questionData[counter].question}
           </Dropdown>
+        );
+      default:
+        return (
+          <p>
+            Invalid question data.
+            <br />
+            Please skip.
+          </p>
         );
     }
   };

@@ -3,8 +3,8 @@ const ProgressBar = ({ counter, length }) => {
 
   return (
     <>
-      <div id="progressBar">
-        <div id="currentProgress" style={{ width: progress + "%" }}>
+      <div className="progressBar">
+        <div className="currentProgress" style={{ width: progress + "%" }}>
           {progress}%
         </div>
       </div>
