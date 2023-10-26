@@ -47,6 +47,13 @@
       "value": "profession",
       "question": "Which of these professions is most interesting to you?",
       "options": ["miau", "moo", "bang"]
+    },
+    { 
+      "type": "slider",
+      "value": "t4",
+      "question": "kwe?",
+      "min": 0,
+      "max": 100
     }
   ]
 }

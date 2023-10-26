@@ -5,11 +5,11 @@ const Radio = ({ children, options, value, formData, updateForm }) => {
 
   return (
     <div className="radio">
-      <p>{children}</p>
+      <p className="question">{children}</p>
       {options.map((option) => {
         return (
           <div key={options.indexOf(option)}>
-            <p >
+            <p>
               <input
                 type="radio"
                 id={option}

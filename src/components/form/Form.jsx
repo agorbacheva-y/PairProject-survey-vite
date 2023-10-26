@@ -4,6 +4,7 @@ import Dropdown from "./Dropdown";
 import Text from "./Text";
 import Summary from "./Summary";
 import ProgressBar from "./ProgressBar";
+import Slider from "./Slider";
 import "./Form.css";
 import data from "../../questions.json";
 
@@ -55,13 +56,17 @@ const Form = () => {
   // Function for showing summary on submit
   const handleSubmit = (e) => {
     e.preventDefault();
+    setCounter(questionData.length);
     setShowSummary(!showSummary);
     setShowQuestions(!showQuestions);
     setErrors(validateInput(formData));
   };
 
-  // Function for survey questions
+  // Function for survey questions (Maybe move to another file/component?)
   const selectQuestion = () => {
+    if (counter >= questionData.length) {
+      return <></>;
+    }
     switch (questionData[counter].type) {
       case "text":
         return (
@@ -94,6 +99,25 @@ const Form = () => {
           >
             {questionData[counter].question}
           </Dropdown>
+        );
+      case "slider":
+        return (
+          <Slider
+            value={questionData[counter].value}
+            min={questionData[counter].min}
+            max={questionData[counter].max}
+            formData={formData}
+            updateForm={updateForm}
+          >
+            {questionData[counter].question}
+          </Slider>
+      default:
+        return (
+          <p>
+            Invalid question data.
+            <br />
+            Please skip.
+          </p>
         );
     }
   };
