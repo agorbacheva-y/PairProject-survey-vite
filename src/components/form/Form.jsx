@@ -23,9 +23,13 @@ const Form = () => {
   // State for showing questions
   const [showQuestions, setShowQuestions] = useState(true);
 
+  // State for if input is filled or not
+  const [inputFilled, setInputFilled] = useState(false);
+
   // Function to update form
   const updateForm = (field, value) => {
     setFormData((values) => ({ ...values, [field]: value }));
+    setInputFilled(true);
   };
 
   // Function for prev button
@@ -46,10 +50,7 @@ const Form = () => {
       setCounter(questionData.length - 1);
     }
 
-    // !!! NOT WORKING...
-    if (Object.values(formData).every(value => value === '')) {
-      submitBtn.disabled = true;
-    }
+    setInputFilled(false);
   };
 
   // Function for showing summary on submit
@@ -128,7 +129,7 @@ const Form = () => {
         {selectQuestion()}
         <div className="buttons">
           <button onClick={handlePrev}>Previous</button>
-          <button onClick={handleNext} >Next</button>
+          <button disabled={inputFilled ? false : true} onClick={handleNext} >Next</button>
         </div>
 
         <button id="submit-btn" onClick={handleSubmit} >Submit</button>
