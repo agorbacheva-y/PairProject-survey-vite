@@ -56,13 +56,17 @@ const Form = () => {
   // Function for showing summary on submit
   const handleSubmit = (e) => {
     e.preventDefault();
+    setCounter(questionData.length);
     setShowSummary(!showSummary);
     setShowQuestions(!showQuestions);
     setErrors(validateInput(formData));
   };
 
-  // Function for survey questions
+  // Function for survey questions (Maybe move to another file/component?)
   const selectQuestion = () => {
+    if (counter >= questionData.length) {
+      return <></>;
+    }
     switch (questionData[counter].type) {
       case "text":
         return (
@@ -107,6 +111,13 @@ const Form = () => {
           >
             {questionData[counter].question}
           </Slider>
+      default:
+        return (
+          <p>
+            Invalid question data.
+            <br />
+            Please skip.
+          </p>
         );
     }
   };
