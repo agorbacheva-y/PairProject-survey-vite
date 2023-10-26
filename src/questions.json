@@ -16,6 +16,13 @@
       "value": "t3",
       "question": "grawr?",
       "options": ["miau", "moo", "bang"]
+    },
+    { 
+      "type": "slider",
+      "value": "t4",
+      "question": "kwe?",
+      "min": 0,
+      "max": 100
     }
   ]
 }
