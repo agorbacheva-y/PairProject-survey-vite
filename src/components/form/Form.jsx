@@ -40,7 +40,6 @@ const Form = () => {
     if (formData.fortuneNumber != 0) {
       setInputFilled(true);
     }
-    
   };
 
   // Function for prev button
@@ -64,9 +63,9 @@ const Form = () => {
     allInputFilled();
   };
 
-  // Function to check if last questions was answered
+  // Function to check if last question was answered
   const allInputFilled = () => {
-    if (Object.keys(formData).length === questionData.length) {
+    if (Object.keys(formData).length - 1 === questionData.length + 2) {
       setAllFilled(true);
     }
   };
@@ -82,7 +81,7 @@ const Form = () => {
   // Function for survey questions (Maybe move to another file/component?)
   const selectQuestion = () => {
     if (counter >= questions.length) {
-      return <></>;
+      return <></>
     }
     switch (questions[counter].type) {
       case "text":
@@ -166,22 +165,23 @@ const Form = () => {
               <button disabled={inputFilled ? false : true } onClick={handleNext}>Next</button>
             </div>
 
-            <button disabled={allInputFilled ? false : true} onClick={handleSubmit} >Submit</button>
+            <button disabled={allFilled ? false : true} onClick={handleSubmit} >Submit</button>
           </div>
         </>
         )
-      };
+      }
 
       {showSummary && (
         <Summary
           formData={formData}
+          setFormData={setFormData}
           setCounter={setCounter}
           setShowQuestions={setShowQuestions}
           setShowSummary={setShowSummary}
           updateForm={updateForm}
           fortuneData={fortuneData}
         />
-      )};
+      )}
     </>
   );
 };

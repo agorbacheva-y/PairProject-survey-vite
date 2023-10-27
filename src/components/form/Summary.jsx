@@ -1,5 +1,6 @@
 const Summary = ({
   formData,
+  setFormData,
   setCounter,
   setShowQuestions,
   setShowSummary,
@@ -11,6 +12,7 @@ const Summary = ({
     setShowQuestions(true);
     setShowSummary(false);
     setCounter(0);
+    setFormData(({ fortuneNumber: 0 }));
   };
 
   const fortuneToString = () => {
