@@ -36,7 +36,11 @@ const Form = () => {
   // Function to update form
   const updateForm = (field, value) => {
     setFormData((values) => ({ ...values, [field]: value }));
-    setInputFilled(true);
+    
+    if (formData.fortuneNumber != 0) {
+      setInputFilled(true);
+    }
+    
   };
 
   // Function for prev button
