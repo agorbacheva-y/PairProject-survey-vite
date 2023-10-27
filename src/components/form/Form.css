@@ -36,6 +36,7 @@ button:disabled {
 
 .submitBtn {
   font-weight: bold;
+  border: 2px solid #7d802a;
 }
 
 .hidden {
