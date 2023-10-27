@@ -63,7 +63,19 @@
         "adjective",
         "group"
       ],
-      "summary": ["All your dreams will come true! You will discover the long lost ", " of ", ". This will lead to ", " appearances on late-night TV, where you will take advantage of your new-found fame to ", " your way into the hearts of millions. ", " will beg you to co-star in the upcoming megahit, ", " in ", ". After a rewarding career as a superstar and part-time ", " you will retire to write ", ", best-selling stories about ", "."]
+      "summary": [
+        "All your dreams will come true! You will discover the long lost ", 
+        " of ", 
+        ". This will lead to ", 
+        " appearances on late-night TV, where you will take advantage of your new-found fame to ", 
+        " your way into the hearts of millions. ", 
+        " will beg you to co-star in the upcoming megahit, ", 
+        " in ", 
+        ". After a rewarding career as a superstar and part-time ", 
+        " you will retire to write ", 
+        ", best-selling stories about ", 
+        "."
+      ]
     },
     {
       "values": [
@@ -78,7 +90,17 @@
         "thing",
         "place"
       ],
-      "summary": ["Many honors will come your way! You will be voted Most ", " for your work with ", ". You will become famous teaching ", " to ", ", and will become a respected ", ". After ", " years researching the ", " of ", ", you will be presented with a solid gold ", " at a ceremony in ", "."]
+      "summary": [
+        "Many honors will come your way! You will be voted Most ", 
+        " for your work with ", 
+        ". You will become famous teaching ", 
+        " to ", 
+        ", and will become a respected ", 
+        ". After ", " years researching the ", 
+        " of ", 
+        ", you will be presented with a solid gold ", 
+        " at a ceremony in ", "."
+      ]
     },
     {
       "values": [
@@ -93,7 +115,19 @@
         "adjective",
         "group"
       ],
-      "summary": ["Romance is in your future! You love to ", ", which will introduce you to many exciting people, including ", "'s favorite ", ". At the close of a whirlwind courtship you will be married in ", ", among the lovely tropical ", ". After ", " years there learning how to ", ", you will return to civilization, bringing with you ", " children and a large ", " collection of priceless ", "."]
+      "summary": [
+        "Romance is in your future! You love to ", 
+        ", which will introduce you to many exciting people, including ", 
+        "'s favorite ", 
+        ". At the close of a whirlwind courtship you will be married in ", 
+        ", among the lovely tropical ", 
+        ". After ", 
+        " years there learning how to ", 
+        ", you will return to civilization, bringing with you ", 
+        " children and a large ", 
+        " collection of priceless ", 
+        "."]
+
     },
     {
       "values": [
@@ -108,7 +142,19 @@
         "group",
         "thing"
       ],
-      "summary": ["You just can't lose! You will enter a contest and win the ", "-dollar jackpot, which will allow you to leave your boring ", " behind and become a world-class ", ". You will ", " all day as you happily take your place among the rich and ", ". ", " will invite you to the ", " resort in ", ", where you can fish for ", " and enjoy your own personal ", "."]
+      "summary": [
+        "You just can't lose! You will enter a contest and win the ", 
+        "-dollar jackpot, which will allow you to leave your boring ", 
+        " behind and become a world-class ", 
+        ". You will ", 
+        " all day as you happily take your place among the rich and ", 
+        ". ", 
+        " will invite you to the ", 
+        " resort in ", 
+        ", where you can fish for ", 
+        " and enjoy your own personal ", 
+        "."
+      ]
     },
     {
       "values": [
@@ -123,7 +169,19 @@
         "group",
         "verb"
       ],
-      "summary": ["The simple life for you! You will spend many happy years raising ", " on a farm in ", ". Your herd of prize-winning ", " will graze contentedly in the ", " ", ", and your ", " will take first place at the county fair. Unfortunately, your peaceful life will ultimately be shattered by the news that ", " is planning to build a center for ", " ", " who ", " on the property next to your farm."]
+      "summary": [
+        "The simple life for you! You will spend many happy years raising ", 
+        " on a farm in ", 
+        ". Your herd of prize-winning ", 
+        " will graze contentedly in the ", 
+        " ", 
+        ", and your ", 
+        " will take first place at the county fair. Unfortunately, your peaceful life will ultimately be shattered by the news that ", 
+        " is planning to build a center for ", 
+        " ", 
+        " who ", 
+        " on the property next to your farm."
+      ]
     }
   ]
 }

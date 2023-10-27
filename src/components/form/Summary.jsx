@@ -29,8 +29,6 @@ const Summary = ({
     return fortune;
   };
 
-  console.log(formData);
-
   return (
     <>
       <div className="summary">
