@@ -65,7 +65,7 @@ const Form = () => {
     if (Object.keys(formData).length === questionData.length) {
       setAllFilled(true);
     }
-  }
+  };
 
   // Function for showing summary on submit
   const handleSubmit = (e) => {
@@ -132,21 +132,6 @@ const Form = () => {
     }
   };
 
-  // Function to validate inputs
-  const validateInput = (formData) => {
-    let errors = {};
-    if (!formData.name) {
-      errors.name = "Please enter your name.";
-    }
-    if (!formData.radio) {
-      errors.radio = "Please select one choice.";
-    }
-    if (!formData.dropdown) {
-      errors.dropdown = "Please select one choice.";
-    }
-    return errors;
-  };
-
   const generateQuestions = () => {
     fortuneData[formData.fortuneNumber - 1].values.forEach((value) =>
       questions.push(questionData.find((question) => question.value === value))
@@ -166,7 +151,7 @@ const Form = () => {
             Please select a fortune number!
           </Radio>
         </>
-      ) : (
+        ) : (
         <>
           {questions.length <= 0 && generateQuestions()}
           <ProgressBar counter={counter} length={questions.length} />
@@ -174,11 +159,14 @@ const Form = () => {
             {selectQuestion()}
             <div className="buttons">
               <button onClick={handlePrev}>Previous</button>
-              <button onClick={handleNext}>Next</button>
+              <button disabled={inputFilled ? false : true } onClick={handleNext}>Next</button>
             </div>
 
-        <button disabled={allInputFilled ? false : true} onClick={handleSubmit} >Submit</button>
-      </div>
+            <button disabled={allInputFilled ? false : true} onClick={handleSubmit} >Submit</button>
+          </div>
+        </>
+        )
+      };
 
       {showSummary && (
         <Summary
@@ -189,7 +177,7 @@ const Form = () => {
           updateForm={updateForm}
           fortuneData={fortuneData}
         />
-      )}
+      )};
     </>
   );
 };

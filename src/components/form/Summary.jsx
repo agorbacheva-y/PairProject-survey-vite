@@ -13,6 +13,18 @@ const Summary = ({
     setCounter(0);
   };
 
+  const fortuneToString = () => {
+    const summary = fortuneData[parseInt(formData.fortuneNumber) - 1].summary;
+    let fortune = "";
+    summary.forEach((aString) => {
+      fortune += aString;
+      if (formData[summary.indexOf(aString)] !== undefined) {
+        fortune += formData[summary.indexOf(aString)];
+      }
+    });
+    return fortune;
+  };
+
   console.log(formData);
 
   return (
