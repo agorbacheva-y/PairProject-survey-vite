@@ -30,7 +30,7 @@ button {
 }
 
 .question {
-  margin: 10px auto;
+  margin: 0 auto 10px auto;
 }
 
 .progressBar {
@@ -38,7 +38,7 @@ button {
   border: 1px solid #313131;
   border-radius: 20px;
   background-color: #ddd;
-  width: 100%;
+  width: 90%;
   overflow: hidden;
 }
 
@@ -50,4 +50,23 @@ button {
   justify-content: center;
   align-items: center;
   transition: 2s ease;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.summary > p {
+  width: 90%;
+  margin: 10px auto;
+}
+
+.summary > button {
+  width: 100px;
+  align-self: center;
+}
+
+@media screen and (min-width: 600px) and (max-width: 992px) {
+
 }

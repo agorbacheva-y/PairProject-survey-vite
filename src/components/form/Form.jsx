@@ -144,7 +144,7 @@ const Form = () => {
   return (
     <>
       {formData.fortuneNumber === 0 ? (
-        <>
+        <div className="form fortune__number">
           <Radio
             options={[1, 2, 3, 4, 5]}
             value={"fortuneNumber"}
@@ -153,7 +153,7 @@ const Form = () => {
           >
             Please select a fortune number!
           </Radio>
-        </>
+        </div>
         ) : (
         <>
           {questions.length <= 0 && generateQuestions()}
@@ -180,6 +180,7 @@ const Form = () => {
           setShowSummary={setShowSummary}
           updateForm={updateForm}
           fortuneData={fortuneData}
+          setAllFilled={setAllFilled}
         />
       )}
     </>
