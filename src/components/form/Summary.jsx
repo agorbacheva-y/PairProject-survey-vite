@@ -3,6 +3,8 @@ const Summary = ({
   setCounter,
   setShowQuestions,
   setShowSummary,
+  updateForm,
+  fortuneData,
 }) => {
   // Function to go back to beginning of survey
   const goToStart = () => {
@@ -16,16 +18,7 @@ const Summary = ({
   return (
     <>
       <div className="summary">
-        {
-          // using entries function to make an array with keys and value that can then use the map function
-          Object.entries(formData).map(([key, value]) => {
-            return (
-              <p key={value}>
-                {key}: {value}
-              </p>
-            );
-          })
-        }
+        <p>{fortuneToString()}</p>
         <button onClick={goToStart}>Back to Start</button>
       </div>
     </>

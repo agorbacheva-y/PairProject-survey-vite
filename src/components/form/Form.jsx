@@ -6,16 +6,20 @@ import Summary from "./Summary";
 import ProgressBar from "./ProgressBar";
 import Slider from "./Slider";
 import "./Form.css";
-import data from "../../questions.json";
+import data from "../../data.json";
 
 const Form = () => {
+  const fortuneData = data.fortunes;
   const questionData = data.questions;
 
   // State for which question is displayed
   const [counter, setCounter] = useState(0);
 
-  // State for holding form input
-  const [formData, setFormData] = useState({});
+  // State for holding form data
+  const [formData, setFormData] = useState({ fortuneNumber: 0 });
+
+  // State for holding questions
+  const [questions, setQuestions] = useState([]);
 
   // State for showing summary
   const [showSummary, setShowSummary] = useState(false);
@@ -46,10 +50,10 @@ const Form = () => {
 
   // Function for next button (Updated to not go out of bounds)
   const handleNext = () => {
-    if (counter < questionData.length - 1) {
+    if (counter < questions.length - 1) {
       setCounter((counter) => counter + 1);
     } else {
-      setCounter(questionData.length - 1);
+      setCounter(questions.length - 1);
     }
 
     setInputFilled(false);
@@ -66,59 +70,55 @@ const Form = () => {
   // Function for showing summary on submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    setCounter(questionData.length);
+    setCounter(questions.length);
     setShowSummary(!showSummary);
     setShowQuestions(!showQuestions);
   };
 
   // Function for survey questions (Maybe move to another file/component?)
   const selectQuestion = () => {
-    if (counter >= questionData.length) {
+    if (counter >= questions.length) {
       return <></>;
     }
-    switch (questionData[counter].type) {
+    switch (questions[counter].type) {
       case "text":
         return (
-          <Text
-            value={questionData[counter].value}
-            formData={formData}
-            updateForm={updateForm}
-          >
-            {questionData[counter].question}
+          <Text value={counter} formData={formData} updateForm={updateForm}>
+            {questions[counter].question}
           </Text>
         );
       case "radio":
         return (
           <Radio
-            options={questionData[counter].options}
-            value={questionData[counter].value}
+            options={questions[counter].options}
+            value={counter}
             formData={formData}
             updateForm={updateForm}
           >
-            {questionData[counter].question}
+            {questions[counter].question}
           </Radio>
         );
       case "dropdown":
         return (
           <Dropdown
-            options={questionData[counter].options}
-            value={questionData[counter].value}
+            options={questions[counter].options}
+            value={counter}
             formData={formData}
             updateForm={updateForm}
           >
-            {questionData[counter].question}
+            {questions[counter].question}
           </Dropdown>
         );
       case "slider":
         return (
           <Slider
-            value={questionData[counter].value}
-            min={questionData[counter].min}
-            max={questionData[counter].max}
+            value={counter}
+            min={questions[counter].min}
+            max={questions[counter].max}
             formData={formData}
             updateForm={updateForm}
           >
-            {questionData[counter].question}
+            {questions[counter].question}
           </Slider>
         );
       default:
@@ -132,15 +132,50 @@ const Form = () => {
     }
   };
 
+  // Function to validate inputs
+  const validateInput = (formData) => {
+    let errors = {};
+    if (!formData.name) {
+      errors.name = "Please enter your name.";
+    }
+    if (!formData.radio) {
+      errors.radio = "Please select one choice.";
+    }
+    if (!formData.dropdown) {
+      errors.dropdown = "Please select one choice.";
+    }
+    return errors;
+  };
+
+  const generateQuestions = () => {
+    fortuneData[formData.fortuneNumber - 1].values.forEach((value) =>
+      questions.push(questionData.find((question) => question.value === value))
+    );
+  };
+
   return (
     <>
-      <ProgressBar counter={counter} length={questionData.length} />
-      <div className={showQuestions ? "form" : "hidden"}>
-        {selectQuestion()}
-        <div className="buttons">
-          <button onClick={handlePrev}>Previous</button>
-          <button disabled={inputFilled ? false : true} onClick={handleNext} >Next</button>
-        </div>
+      {formData.fortuneNumber === 0 ? (
+        <>
+          <Radio
+            options={[1, 2, 3, 4, 5]}
+            value={"fortuneNumber"}
+            formData={formData}
+            updateForm={updateForm}
+          >
+            Please select a fortune number!
+          </Radio>
+        </>
+      ) : (
+        <>
+          {questions.length <= 0 && generateQuestions()}
+          <ProgressBar counter={counter} length={questions.length} />
+          <div className={showQuestions ? "form" : "hidden"}>
+            {selectQuestion()}
+            <div className="buttons">
+              <button onClick={handlePrev}>Previous</button>
+              <button onClick={handleNext}>Next</button>
+            </div>
 
         <button disabled={allInputFilled ? false : true} onClick={handleSubmit} >Submit</button>
       </div>
@@ -150,7 +185,9 @@ const Form = () => {
           formData={formData}
           setCounter={setCounter}
           setShowQuestions={setShowQuestions}
-          setShowSummary={setShowSummary}  
+          setShowSummary={setShowSummary}
+          updateForm={updateForm}
+          fortuneData={fortuneData}
         />
       )}
     </>

@@ -3,8 +3,9 @@ const Slider = ({ children, min, max, value, formData, updateForm }) => {
     updateForm(value, e.target.value);
   };
 
+  // To avoid error in console, create empty value on formData
   if (formData[value] === undefined) {
-    formData[value] = "";
+    formData[value] = 0;
   }
 
   return (
@@ -18,6 +19,7 @@ const Slider = ({ children, min, max, value, formData, updateForm }) => {
         value={formData[value]}
         onChange={updateValue}
       />
+      <p>{formData[value]}</p>
     </>
   );
 };

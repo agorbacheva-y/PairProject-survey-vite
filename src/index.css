@@ -9,7 +9,7 @@ body {
   align-items: center;
   justify-content: center;
   position: relative;
-  background-image: url("../public/stary_background.png");
+  background-image: url("../stary_background.png");
 }
 
 main {
