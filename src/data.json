@@ -1,0 +1,129 @@
+{
+  "questions": [
+    {
+      "type": "text",
+      "value": "thing",
+      "question": "Enter the name of something you like."
+    },
+    {
+      "type": "dropdown",
+      "value": "group",
+      "question": "Pick one of these groups",
+      "options": ["gerbils", "popcorn shrimp", "Q-tips", "soup cans", "shoelaces"]
+    },
+    {
+      "type": "slider",
+      "value": "number",
+      "question": "Which is your favourite number?",
+      "min": 0,
+      "max": 100
+    },
+    {
+      "type": "radio",
+      "value": "place",
+      "question": "Select which place appeals to you most.",
+      "options": ["the planet Zerg", "the North Pole", "Moscow", "Mount Olympus", "Las Vegas"]
+    },
+    {
+      "type": "dropdown",
+      "value": "adjective",
+      "question": "Which adjective do you like the look of?",
+      "options": ["cranky", "squishy", "obnoxious", "flaky", "sneaky"]
+    },
+    {
+      "type": "dropdown",
+      "value": "verb",
+      "question": "Pick an action that catches your eye.",
+      "options": ["bounce", "knit", "square-dance", "snore", "tiptoe"]
+    },
+    {
+      "type": "radio",
+      "value": "famousPerson",
+      "question": "Select a famous person you like.",
+      "options": ["Mickey Mouse", "Harry Potter", "Jimmy Hendrix", "Miss Piggy", "The Grinch"]
+    },
+    {
+      "type": "radio",
+      "value": "profession",
+      "question": "Which of these professions is most interesting to you?",
+      "options": ["Monster-movie director", "Zippy Cola taste-tester", "professional hole-puncher", "worm rancher", "toothbrush salesperson"]
+    }
+  ],
+  "fortunes": [
+    {
+      "values": [
+        "thing",
+        "place",
+        "number",
+        "verb",
+        "famousPerson",
+        "group",
+        "place",
+        "profession",
+        "adjective",
+        "group"
+      ],
+      "summary": ["All your dreams will come true! You will discover the long lost ", " of ", ". This will lead to ", " appearances on late-night TV, where you will take advantage of your new-found fame to ", " your way into the hearts of millions. ", " will beg you to co-star in the upcoming megahit, ", " in ", ". After a rewarding career as a superstar and part-time ", " you will retire to write ", ", best-selling stories about ", "."]
+    },
+    {
+      "values": [
+        "adjective",
+        "group",
+        "group",
+        "verb",
+        "profession",
+        "number",
+        "group",
+        "group",
+        "thing",
+        "place"
+      ],
+      "summary": ["Many honors will come your way! You will be voted Most ", " for your work with ", ". You will become famous teaching ", " to ", ", and will become a respected ", ". After ", " years researching the ", " of ", ", you will be presented with a solid gold ", " at a ceremony in ", "."]
+    },
+    {
+      "values": [
+        "verb",
+        "famousPerson",
+        "profession",
+        "place",
+        "group",
+        "number",
+        "verb",
+        "number",
+        "adjective",
+        "group"
+      ],
+      "summary": ["Romance is in your future! You love to ", ", which will introduce you to many exciting people, including ", "'s favorite ", ". At the close of a whirlwind courtship you will be married in ", ", among the lovely tropical ", ". After ", " years there learning how to ", ", you will return to civilization, bringing with you ", " children and a large ", " collection of priceless ", "."]
+    },
+    {
+      "values": [
+        "number",
+        "group",
+        "profession",
+        "verb",
+        "adjective",
+        "famousPerson",
+        "adjective",
+        "place",
+        "group",
+        "thing"
+      ],
+      "summary": ["You just can't lose! You will enter a contest and win the ", "-dollar jackpot, which will allow you to leave your boring ", " behind and become a world-class ", ". You will ", " all day as you happily take your place among the rich and ", ". ", " will invite you to the ", " resort in ", ", where you can fish for ", " and enjoy your own personal ", "."]
+    },
+    {
+      "values": [
+        "group",
+        "place",
+        "group",
+        "adjective",
+        "group",
+        "thing",
+        "famousPerson",
+        "adjective",
+        "group",
+        "verb"
+      ],
+      "summary": ["The simple life for you! You will spend many happy years raising ", " on a farm in ", ". Your herd of prize-winning ", " will graze contentedly in the ", " ", ", and your ", " will take first place at the county fair. Unfortunately, your peaceful life will ultimately be shattered by the news that ", " is planning to build a center for ", " ", " who ", " on the property next to your farm."]
+    }
+  ]
+}
