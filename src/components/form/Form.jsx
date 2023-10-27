@@ -165,7 +165,7 @@ const Form = () => {
               <button disabled={inputFilled ? false : true } onClick={handleNext}>Next</button>
             </div>
 
-            <button disabled={allFilled ? false : true} onClick={handleSubmit} >Submit</button>
+            <button className="submitBtn" disabled={allFilled ? false : true} onClick={handleSubmit} >Submit</button>
           </div>
         </>
         )
