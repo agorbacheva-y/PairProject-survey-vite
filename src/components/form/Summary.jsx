@@ -1,17 +1,20 @@
 const Summary = ({
   formData,
+  setFormData,
   setCounter,
   setShowQuestions,
   setShowSummary,
   updateForm,
   fortuneData,
+  setAllFilled
 }) => {
   // Function to go back to beginning of survey
   const goToStart = () => {
     setShowQuestions(true);
     setShowSummary(false);
     setCounter(0);
-    updateForm("fortuneNumber", 0);
+    setFormData(({ fortuneNumber: 0 }));
+    setAllFilled(false);
   };
 
   const fortuneToString = () => {

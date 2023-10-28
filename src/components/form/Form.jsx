@@ -27,15 +27,18 @@ const Form = () => {
   // State for showing questions
   const [showQuestions, setShowQuestions] = useState(true);
 
-  // State for holding errors in input validation
-  const [errors, setErrors] = useState({});
+  // State for if input is filled or not
+  const [inputFilled, setInputFilled] = useState(false);
+
+  // State for if last question is filled or not
+  const [allFilled, setAllFilled] = useState(false);
 
   // Function to update form
   const updateForm = (field, value) => {
     setFormData((values) => ({ ...values, [field]: value }));
-
-    if (!value) {
-      //
+    
+    if (formData.fortuneNumber != 0) {
+      setInputFilled(true);
     }
   };
 
@@ -55,6 +58,16 @@ const Form = () => {
     } else {
       setCounter(questions.length - 1);
     }
+
+    setInputFilled(false);
+    allInputFilled();
+  };
+
+  // Function to check if last question was answered
+  const allInputFilled = () => {
+    if (Object.keys(formData).length - 1 === questionData.length + 2) {
+      setAllFilled(true);
+    }
   };
 
   // Function for showing summary on submit
@@ -63,13 +76,12 @@ const Form = () => {
     setCounter(questions.length);
     setShowSummary(!showSummary);
     setShowQuestions(!showQuestions);
-    setErrors(validateInput(formData));
   };
 
   // Function for survey questions (Maybe move to another file/component?)
   const selectQuestion = () => {
     if (counter >= questions.length) {
-      return <></>;
+      return <></>
     }
     switch (questions[counter].type) {
       case "text":
@@ -123,21 +135,6 @@ const Form = () => {
     }
   };
 
-  // Function to validate inputs
-  const validateInput = (formData) => {
-    let errors = {};
-    if (!formData.name) {
-      errors.name = "Please enter your name.";
-    }
-    if (!formData.radio) {
-      errors.radio = "Please select one choice.";
-    }
-    if (!formData.dropdown) {
-      errors.dropdown = "Please select one choice.";
-    }
-    return errors;
-  };
-
   const generateQuestions = () => {
     fortuneData[formData.fortuneNumber - 1].values.forEach((value) =>
       questions.push(questionData.find((question) => question.value === value))
@@ -147,7 +144,7 @@ const Form = () => {
   return (
     <>
       {formData.fortuneNumber === 0 ? (
-        <>
+        <div className="form fortune__number">
           <Radio
             options={[1, 2, 3, 4, 5]}
             value={"fortuneNumber"}
@@ -156,8 +153,8 @@ const Form = () => {
           >
             Please select a fortune number!
           </Radio>
-        </>
-      ) : (
+        </div>
+        ) : (
         <>
           {questions.length <= 0 && generateQuestions()}
           <ProgressBar counter={counter} length={questions.length} />
@@ -165,22 +162,25 @@ const Form = () => {
             {selectQuestion()}
             <div className="buttons">
               <button onClick={handlePrev}>Previous</button>
-              <button onClick={handleNext}>Next</button>
+              <button disabled={inputFilled ? false : true } onClick={handleNext}>Next</button>
             </div>
 
-            <button onClick={handleSubmit}>Submit</button>
+            <button className={allFilled ? "submitBtn" : "hidden"} onClick={handleSubmit} >Submit</button>
           </div>
         </>
-      )}
+        )
+      }
 
       {showSummary && (
         <Summary
           formData={formData}
+          setFormData={setFormData}
           setCounter={setCounter}
           setShowQuestions={setShowQuestions}
           setShowSummary={setShowSummary}
           updateForm={updateForm}
           fortuneData={fortuneData}
+          setAllFilled={setAllFilled}
         />
       )}
     </>
