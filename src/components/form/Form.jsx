@@ -146,7 +146,10 @@ const Form = () => {
       {formData.fortuneNumber === 0 ? (
         <div className="form fortune__number">
           <Radio
-            options={[1, 2, 3, 4, 5]}
+            options={Array.from(
+              { length: fortuneData.length },
+              (e, i) => i + 1
+            )}
             value={"fortuneNumber"}
             formData={formData}
             updateForm={updateForm}

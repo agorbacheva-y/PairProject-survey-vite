@@ -39,4 +39,21 @@ const Summary = ({
   );
 };
 
+Summary.defaultProps = {
+  fortuneData: {},
+  setCounter: () => {
+    return null;
+  },
+  setShowQuestions: () => {
+    return null;
+  },
+  setShowSummary: () => {
+    return null;
+  },
+  formData: {},
+  updateForm: () => {
+    return null;
+  },
+};
+
 export default Summary;

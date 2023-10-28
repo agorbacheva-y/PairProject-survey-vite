@@ -25,4 +25,14 @@ const Dropdown = ({ children, options, value, formData, updateForm }) => {
   );
 };
 
+Dropdown.defaultProps = {
+  children: "Missing question data",
+  options: [],
+  value: "",
+  formData: {},
+  updateForm: () => {
+    return null;
+  },
+};
+
 export default Dropdown;

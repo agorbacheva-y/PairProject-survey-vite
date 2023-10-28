@@ -12,4 +12,9 @@ const ProgressBar = ({ counter, length }) => {
   );
 };
 
+ProgressBar.defaultProps = {
+  counter: 1,
+  length: 1,
+};
+
 export default ProgressBar;
