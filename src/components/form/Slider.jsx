@@ -24,4 +24,15 @@ const Slider = ({ children, min, max, value, formData, updateForm }) => {
   );
 };
 
+Slider.defaultProps = {
+  children: "Missing question data",
+  min: 0,
+  max: 0,
+  value: "",
+  formData: {},
+  updateForm: () => {
+    return null;
+  },
+};
+
 export default Slider;

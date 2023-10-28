@@ -22,4 +22,13 @@ const Text = ({ children, value, formData, updateForm }) => {
   );
 };
 
+Text.defaultProps = {
+  children: "Missing question data",
+  value: "",
+  formData: {},
+  updateForm: () => {
+    return null;
+  },
+};
+
 export default Text;

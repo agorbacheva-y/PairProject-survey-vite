@@ -31,4 +31,14 @@ const Radio = ({ children, options, value, formData, updateForm }) => {
   );
 };
 
+Radio.defaultProps = {
+  children: "Missing question data",
+  options: [],
+  value: "",
+  formData: {},
+  updateForm: () => {
+    return null;
+  },
+};
+
 export default Radio;
