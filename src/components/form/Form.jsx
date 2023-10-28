@@ -36,9 +36,14 @@ const Form = () => {
   // Function to update form
   const updateForm = (field, value) => {
     setFormData((values) => ({ ...values, [field]: value }));
-    
-    if (formData.fortuneNumber != 0) {
+
+    if (
+      formData.fortuneNumber != 0 &&
+      !value.search(/^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/i)
+    ) {
       setInputFilled(true);
+    } else {
+      setInputFilled(false);
     }
   };
 
@@ -58,7 +63,6 @@ const Form = () => {
     } else {
       setCounter(questions.length - 1);
     }
-
     setInputFilled(false);
     allInputFilled();
   };
@@ -81,7 +85,7 @@ const Form = () => {
   // Function for survey questions (Maybe move to another file/component?)
   const selectQuestion = () => {
     if (counter >= questions.length) {
-      return <></>
+      return <></>;
     }
     switch (questions[counter].type) {
       case "text":
@@ -125,6 +129,7 @@ const Form = () => {
           </Slider>
         );
       default:
+        updateForm(counter, "invalid");
         return (
           <p>
             Invalid question data.
@@ -157,7 +162,7 @@ const Form = () => {
             Please select a fortune number!
           </Radio>
         </div>
-        ) : (
+      ) : (
         <>
           {questions.length <= 0 && generateQuestions()}
           <ProgressBar counter={counter} length={questions.length} />
@@ -165,14 +170,23 @@ const Form = () => {
             {selectQuestion()}
             <div className="buttons">
               <button onClick={handlePrev}>Previous</button>
-              <button disabled={inputFilled ? false : true } onClick={handleNext}>Next</button>
+              <button
+                disabled={inputFilled ? false : true}
+                onClick={handleNext}
+              >
+                Next
+              </button>
             </div>
 
-            <button className={allFilled ? "submitBtn" : "hidden"} onClick={handleSubmit} >Submit</button>
+            <button
+              className={allFilled ? "submitBtn" : "hidden"}
+              onClick={handleSubmit}
+            >
+              Submit
+            </button>
           </div>
         </>
-        )
-      }
+      )}
 
       {showSummary && (
         <Summary
