@@ -1,3 +1,10 @@
+:root {
+  --primary: #7d802a;
+  --secondary: #ccd254;
+  --blank: #ddd;
+
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -6,16 +13,16 @@
 }
 
 .buttons {
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 button {
   margin: 10px;
   padding: 5px;
   color: black;
-  background-color: #ccd254;
+  background-color: var(--secondary);
   border-radius: 8px;
-  border: 1px solid #7d802a;
+  border: 1px solid var(--primary);
 }
 
 button:hover:enabled {
@@ -26,17 +33,17 @@ button:hover:enabled {
 button:active:enabled {
   outline-style: solid;
   outline-color: transparent;
-  box-shadow: 0 0 0 2px #7d802a;
+  box-shadow: 0 0 0 2px var(--primary);
 }
 
 button:disabled {
-  background-color: #cccccc;
+  background-color: var(--blank);
   color: #666;
 }
 
 .submitBtn {
   font-weight: bold;
-  border: 2px solid #7d802a;
+  border: 2px solid var(--primary);
 }
 
 .hidden {
@@ -58,22 +65,54 @@ button:disabled {
   margin: 10px;
 }
 
+.slider {
+  width: 80%;
+  height: 15px;
+  margin: 10px auto;
+  border-radius: 5px;
+  outline: none;
+  appearance: none;
+  background: var(--blank);
+  opacity: 0.7;
+  transition: opacity .4s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%; 
+  background: var(--primary);
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
 .question {
   margin: 0 auto 10px auto;
 }
 
 .progressBar {
-  margin: 10px auto;
+  margin: 30px auto;
   border: 1px solid #313131;
   border-radius: 20px;
-  background-color: #ddd;
+  background-color: var(--blank);
   width: 90%;
   overflow: hidden;
 }
 
 .currentProgress {
-  background-color: #7d802a;
-  color: #ddd;
+  background-color: var(--primary);
+  color: var(--blank);
   height: 30px;
   display: flex;
   justify-content: center;
@@ -89,6 +128,7 @@ button:disabled {
 .summary > p {
   width: 90%;
   margin: 10px auto;
+  text-align: center;
 }
 
 .summary > button {
