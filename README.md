@@ -1,14 +1,9 @@
-<h1 align="center">
-  <a href="">
-    <img src="/src/assets/survey.svg" alt="Project Banner Image">
-  </a>
-</h1>
-
 # Survey Project
 
-Replace this readme with your own information about your project.
+Technigo Week 5 Pair Project
+Daniel Read and Ayumi Gorbacheva-Yamamoto (Team Banana)
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+The assignment was to create a controlled form with a Typeform-like survey.
 
 ## Getting Started with the Project
 
@@ -24,11 +19,14 @@ npm i && code . && npm run dev
 
 ### The Problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+We chose to create a Mad Libs type fortune telling game where a user enters or chooses words that will be used to fill in the blanks for a fortune to be read at the end. 
+
+We started by creating a simple form with 3 questions, each with different input styles: text, radio button, dropdown. The questions are structured so it can be edited dynamically by using props. We used the hook useState to store question and input data as well as the state of buttons.
+
 
 ### View it live
 
-Every project should be deployed somewhere. Be sure to include the link to the deployed project so that the viewer can click around and see what it's all about.
+<a href=https://technigo-wk5-survey-vite.netlify.app>Deployed site</a>
 
 ## Instructions
 
