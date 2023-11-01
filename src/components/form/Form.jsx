@@ -36,15 +36,6 @@ const Form = () => {
   // Function to update form
   const updateForm = (field, value) => {
     setFormData((values) => ({ ...values, [field]: value }));
-
-    if (
-      formData.fortuneNumber != 0 &&
-      !value.search(/^[A-Za-z0-9]+(?:[ _-][A-Za-z0-9]+)*$/i)
-    ) {
-      setInputFilled(true);
-    } else {
-      setInputFilled(false);
-    }
   };
 
   // Function for prev button
@@ -52,6 +43,7 @@ const Form = () => {
     if (counter > 0) {
       setCounter((counter) => counter - 1);
     } else {
+      setFormData({ fortuneNumber: 0 });
       setCounter(0);
     }
   };
@@ -61,25 +53,10 @@ const Form = () => {
     if (counter < questions.length - 1) {
       setCounter((counter) => counter + 1);
     } else {
-      setCounter(questions.length - 1);
+      setCounter(questions.length);
+      setShowSummary(!showSummary);
+      setShowQuestions(!showQuestions);
     }
-    setInputFilled(false);
-    allInputFilled();
-  };
-
-  // Function to check if last question was answered
-  const allInputFilled = () => {
-    if (Object.keys(formData).length - 1 === questionData.length + 2) {
-      setAllFilled(true);
-    }
-  };
-
-  // Function for showing summary on submit
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setCounter(questions.length);
-    setShowSummary(!showSummary);
-    setShowQuestions(!showQuestions);
   };
 
   // Function for survey questions (Maybe move to another file/component?)
@@ -90,7 +67,12 @@ const Form = () => {
     switch (questions[counter].type) {
       case "text":
         return (
-          <Text value={counter} formData={formData} updateForm={updateForm}>
+          <Text
+            value={counter}
+            formData={formData}
+            updateForm={updateForm}
+            setInputFilled={setInputFilled}
+          >
             {questions[counter].question}
           </Text>
         );
@@ -101,6 +83,7 @@ const Form = () => {
             value={counter}
             formData={formData}
             updateForm={updateForm}
+            setInputFilled={setInputFilled}
           >
             {questions[counter].question}
           </Radio>
@@ -112,6 +95,7 @@ const Form = () => {
             value={counter}
             formData={formData}
             updateForm={updateForm}
+            setInputFilled={setInputFilled}
           >
             {questions[counter].question}
           </Dropdown>
@@ -124,6 +108,7 @@ const Form = () => {
             max={questions[counter].max}
             formData={formData}
             updateForm={updateForm}
+            setInputFilled={setInputFilled}
           >
             {questions[counter].question}
           </Slider>
@@ -141,9 +126,43 @@ const Form = () => {
   };
 
   const generateQuestions = () => {
-    fortuneData[formData.fortuneNumber - 1].values.forEach((value) =>
-      questions.push(questionData.find((question) => question.value === value))
-    );
+    let tempQuestions = [];
+    fortuneData[formData.fortuneNumber - 1].values.forEach((value) => {
+      const selectedQ = questionData.find(
+        (question) => question.value === value
+      );
+      let tempQ = {
+        type: selectedQ.type,
+        question:
+          selectedQ.question[
+            Math.floor(Math.random() * selectedQ.question.length)
+          ],
+      };
+      switch (selectedQ.type) {
+        case "dropdown":
+          tempQ.options = selectedQ.options;
+          break;
+        case "radio":
+          let opts = [];
+          let nums = [];
+          for (let i = 0; i < 4; i++) {
+            let x = Math.floor(Math.random() * selectedQ.options.length);
+            while (nums.includes(x)) {
+              x = Math.floor(Math.random() * selectedQ.options.length);
+            }
+            nums.push(x);
+          }
+          nums.forEach((index) => opts.push(selectedQ.options[index]));
+          tempQ.options = opts;
+          break;
+        case "slider":
+          tempQ.min = selectedQ.min;
+          tempQ.max = selectedQ.max;
+          break;
+      }
+      tempQuestions.push(tempQ);
+    });
+    setQuestions(tempQuestions);
   };
 
   return (
@@ -158,6 +177,7 @@ const Form = () => {
             value={"fortuneNumber"}
             formData={formData}
             updateForm={updateForm}
+            setInputFilled={setInputFilled}
           >
             Please select a fortune number!
           </Radio>
@@ -174,16 +194,9 @@ const Form = () => {
                 disabled={inputFilled ? false : true}
                 onClick={handleNext}
               >
-                Next
+                {counter < questions.length - 1 ? `Next` : `Submit`}
               </button>
             </div>
-
-            <button
-              className={allFilled ? "submitBtn" : "hidden"}
-              onClick={handleSubmit}
-            >
-              Submit
-            </button>
           </div>
         </>
       )}
@@ -195,9 +208,7 @@ const Form = () => {
           setCounter={setCounter}
           setShowQuestions={setShowQuestions}
           setShowSummary={setShowSummary}
-          updateForm={updateForm}
           fortuneData={fortuneData}
-          setAllFilled={setAllFilled}
         />
       )}
     </>

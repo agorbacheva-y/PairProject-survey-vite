@@ -1,4 +1,13 @@
-const Dropdown = ({ children, options, value, formData, updateForm }) => {
+import { validate } from "./Functions.js";
+
+const Dropdown = ({
+  children,
+  options,
+  value,
+  formData,
+  updateForm,
+  setInputFilled,
+}) => {
   const updateSelection = (e) => {
     updateForm(value, e.target.value);
   };
@@ -7,20 +16,29 @@ const Dropdown = ({ children, options, value, formData, updateForm }) => {
   if (formData[value] === undefined) {
     formData[value] = "";
   }
+  setInputFilled(validate(formData[value]));
 
   return (
     <>
-      <p className="question">{children}</p>
-      <select value={formData[value]} onChange={updateSelection}>
-        <option value="">Select an option</option>
-        {options.map((option) => {
-          return (
-            <option key={options.indexOf(option)} value={option}>
-              {option}
-            </option>
-          );
-        })}
-      </select>
+      <div className="questionContainer">
+        <label for="questionAnswer" className="question">
+          {children}
+        </label>
+        <select
+          id="questionAnswer"
+          value={formData[value]}
+          onChange={updateSelection}
+        >
+          <option value="">Select an option</option>
+          {options.map((option) => {
+            return (
+              <option key={options.indexOf(option)} value={option}>
+                {option}
+              </option>
+            );
+          })}
+        </select>
+      </div>
     </>
   );
 };
@@ -31,6 +49,9 @@ Dropdown.defaultProps = {
   value: "",
   formData: {},
   updateForm: () => {
+    return null;
+  },
+  setInputFilled: () => {
     return null;
   },
 };

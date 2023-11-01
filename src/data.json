@@ -3,50 +3,50 @@
     {
       "type": "text",
       "value": "thing",
-      "question": "Enter the name of something you like."
+      "question": ["Enter the name of something you like.", "Enter the name of something near you.", "What item is on your mind?", "What is the first item you remember when you woke up?", "what is the first thing on your shopping list?"]
     },
     {
       "type": "dropdown",
       "value": "group",
-      "question": "Pick one of these groups",
-      "options": ["gerbils", "popcorn shrimp", "Q-tips", "soup cans", "shoelaces"]
+      "question": ["Pick one of these groups", "which of these groups speaks to you?", "Which of these takes your fancy?", "Which is the most relatable group for you?", "Pick one of these"],
+      "options": ["gerbils", "popcorn shrimp", "Q-tips", "soup cans", "shoelaces", "stones", "vermin", "shrubs", "planks", "nuts", "screws", "threads"]
     },
     {
       "type": "slider",
       "value": "number",
-      "question": "Which is your favourite number?",
+      "question": ["Which is your favourite number?", "Pick a number, any number", "What number is on your mind?", "How many people have you seen today?", "What is a common number for you?"],
       "min": 0,
       "max": 100
     },
     {
       "type": "radio",
       "value": "place",
-      "question": "Select which place appeals to you most.",
-      "options": ["the planet Zerg", "the North Pole", "Moscow", "Mount Olympus", "Las Vegas"]
+      "question": ["Select which place appeals to you most.", "Which of these places have you dreamt of?", "Which of these places would you like to visit?", "Where would you prefer to spend a night?", "Which of these places would you avoid the most?"],
+      "options": ["the planet Zerg", "the North Pole", "Moscow", "Mount Olympus", "Las Vegas", "Stockholm", "Madagascar", "Atlantis", "Valhalla", "the Sahara Desert", "Tokyo", "the moon"]
     },
     {
       "type": "dropdown",
       "value": "adjective",
-      "question": "Which adjective do you like the look of?",
-      "options": ["cranky", "squishy", "obnoxious", "flaky", "sneaky"]
+      "question": ["Which adjective do you like the look of?", "Which of these do you feel?", "Which of these do you dislike the most?", "Which of these do you prefer?", "Pick an adjective that describes you."],
+      "options": ["cranky", "squishy", "obnoxious", "flaky", "sneaky", "floppy", "sticky", "bouncy", "lanky", "smokey", "earthy", "slappy"]
     },
     {
       "type": "dropdown",
       "value": "verb",
-      "question": "Pick an action that catches your eye.",
-      "options": ["bounce", "knit", "square-dance", "snore", "tiptoe"]
+      "question": ["Pick an action that catches your eye.", "Which of these activities do you like the most?", "Pick an action you would like to do now.", "Which is the most recent activity you have done?", "What action would you like to do in your dreams?"],
+      "options": ["bounce", "knit", "square-dance", "snore", "tiptoe", "jump", "roll", "slap", "pat", "lick", "stare", "push"]
     },
     {
       "type": "radio",
       "value": "famousPerson",
-      "question": "Select a famous person you like.",
-      "options": ["Mickey Mouse", "Harry Potter", "Jimmy Hendrix", "Miss Piggy", "The Grinch"]
+      "question": ["Select a famous person you like.", "Which of these is your favourite?", "Pick one of these people you can relate to.", "Pick the one you like the look of the most.", "Pick the one that terrifies you the most."],
+      "options": ["Mickey Mouse", "Harry Potter", "Catwoman", "Jimmy Hendrix", "Miss Piggy", "The Grinch", "Ariel","Santa Claus", "Batman", "Frodo", "Darth Vader", "Lara Croft"]
     },
     {
       "type": "radio",
       "value": "profession",
-      "question": "Which of these professions is most interesting to you?",
-      "options": ["Monster-movie director", "Zippy Cola taste-tester", "professional hole-puncher", "worm rancher", "toothbrush salesperson"]
+      "question": ["Which of these professions is most interesting to you?", "Which profession of these do you not like the sound of?", "Pick a profession that is relatable to you.", "Which of these professions would you do for a lifetime?", "Pick which profession you would like to do the least."],
+      "options": ["monster-movie director", "Zippy Cola taste-tester", "professional hole-puncher", "worm rancher", "toothbrush salesperson", "robot masseur", "snow ball roller", "tree licker", "cave cartographer", "bird stroker", "clothes hanger", "brick stacker"]
     }
   ],
   "fortunes": [

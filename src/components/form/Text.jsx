@@ -1,4 +1,6 @@
-const Text = ({ children, value, formData, updateForm }) => {
+import { validate } from "./Functions.js";
+
+const Text = ({ children, value, formData, updateForm, setInputFilled }) => {
   const updateName = (e) => {
     updateForm(value, e.target.value);
   };
@@ -7,18 +9,23 @@ const Text = ({ children, value, formData, updateForm }) => {
   if (formData[value] === undefined) {
     formData[value] = "";
   }
+  setInputFilled(validate(formData[value]));
 
   return (
-    <div className="text">
-      <p className="question">{children}</p>
-      <input
-        label="name"
-        type="text"
-        value={formData[value]}
-        onChange={updateName}
-        placeholder="Enter name"
-      />
-    </div>
+    <>
+      <div className="questionContainer">
+        <label for="questionAnswer" className="question">
+          {children}
+        </label>
+        <input
+          id="questionAnswer"
+          type="text"
+          value={formData[value]}
+          onChange={updateName}
+          placeholder="Enter name"
+        />
+      </div>
+    </>
   );
 };
 
@@ -27,6 +34,9 @@ Text.defaultProps = {
   value: "",
   formData: {},
   updateForm: () => {
+    return null;
+  },
+  setInputFilled: () => {
     return null;
   },
 };

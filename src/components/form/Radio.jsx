@@ -1,4 +1,13 @@
-const Radio = ({ children, options, value, formData, updateForm }) => {
+import { validate } from "./Functions.js";
+
+const Radio = ({
+  children,
+  options,
+  value,
+  formData,
+  updateForm,
+  setInputFilled,
+}) => {
   const updateRadio = (e) => {
     updateForm(value, e.target.value);
   };
@@ -7,28 +16,34 @@ const Radio = ({ children, options, value, formData, updateForm }) => {
   if (formData[value] === undefined) {
     formData[value] = "";
   }
+  setInputFilled(validate(formData[value]));
 
   return (
-    <div className="radio">
-      <p className="question">{children}</p>
-      {options.map((option) => {
-        return (
-          <div key={options.indexOf(option)}>
-            <p>
-              <input
-                type="radio"
-                id={option}
-                value={option}
-                onChange={updateRadio}
-                checked={option === formData[value]}
-                name="radio"
-              />{" "}
-              {option}
-            </p>
-          </div>
-        );
-      })}
-    </div>
+    <>
+      <div className="questionContainer">
+        <label className="question">{children}</label>
+        <div className="radio">
+          {options.map((option) => {
+            return (
+              <div key={options.indexOf(option)}>
+                <label>
+                  <input
+                    key={options.indexOf(option)}
+                    type="radio"
+                    id={option}
+                    name="questionAnswer"
+                    value={option}
+                    onChange={updateRadio}
+                    checked={option === formData[value]}
+                  />{" "}
+                  {option}
+                </label>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </>
   );
 };
 
@@ -38,6 +53,9 @@ Radio.defaultProps = {
   value: "",
   formData: {},
   updateForm: () => {
+    return null;
+  },
+  setInputFilled: () => {
     return null;
   },
 };
